@@ -1,24 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Text from './components/Text';
+import GlobalFonts from './fonts/fonts';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GlobalFonts />
+      <Text
+        text="Variable Font says what?"
+        isScale={false}
+        isFlex={true}
+        isAlpha={false}
+        isStroke={false}
+        isWidth={true}
+        isWeight={true}
+        isItalic={true}
+      />
     </div>
   );
 }
