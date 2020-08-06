@@ -9,12 +9,12 @@ function App() {
       <Text
         text="Variable Font says what?"
         isScale={false}
-        isFlex={true}
+        isFlex={false}
         isAlpha={false}
         isStroke={false}
-        isWidth={true}
+        isWidth={false}
         isWeight={true}
-        isItalic={true}
+        isItalic={false}
       />
     </div>
   );
