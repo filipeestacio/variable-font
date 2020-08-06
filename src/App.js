@@ -7,13 +7,13 @@ function App() {
     <div className="App">
       <GlobalFonts />
       <Text
-        text="Variable Font says what?"
-        isScale={false}
+        text="Compress"
+        isScale={true}
         isFlex={false}
         isAlpha={false}
         isStroke={false}
         isWidth={false}
-        isWeight={true}
+        isWeight={false}
         isItalic={false}
       />
     </div>
