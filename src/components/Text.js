@@ -35,27 +35,23 @@ const Text = ({
   isItalic,
 }) => {
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
   const [width, setWidth] = useState();
-  const [height, setHeight] = useState();
+  const [textHeight, setTextHeight] = useState();
   const [fontSize, setFontSize] = useState(
     window.innerWidth / (text.length / 1.6)
   );
-  const [scaleY, setScaleY] = useState(
-    (window.innerHeight / height).toFixed(2)
-  );
+  const [scaleY, setScaleY] = useState((windowHeight / textHeight).toFixed(2));
   const [lineHeight, setLineHeight] = useState(scaleY * 0.8);
 
   const el = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
-      setFontSize(window.innerWidth / (text.length / 1.6));
-      setWidth(el.current.offsetWidth);
-      setHeight(el.current.offsetHeight);
-      setScaleY((window.innerHeight / height).toFixed(2));
-      setLineHeight(scaleY * 0.8);
+      setWindowWidth(window.innerWidth);
+      setWindowHeight(window.innerHeight);
     };
-    handleResize();
     window.addEventListener('resize', () => {
       handleResize();
     });
@@ -64,7 +60,27 @@ const Text = ({
         handleResize();
       });
     };
-  }, [width]);
+  });
+
+  useEffect(() => {
+    setFontSize(windowWidth / (text.length / 1.6));
+  }, [windowWidth, text.length]);
+
+  useEffect(() => {
+    setWidth(el.current.offsetWidth);
+  }, []);
+
+  useEffect(() => {
+    setTextHeight(el.current.offsetHeight);
+  }, []);
+
+  useEffect(() => {
+    setScaleY((windowHeight / textHeight).toFixed(2));
+  }, [windowHeight, textHeight]);
+
+  useEffect(() => {
+    setLineHeight(scaleY * 0.8);
+  }, [scaleY]);
 
   const handleMouseMove = (event) => {
     setCursor({ x: event.clientX, y: event.clientY });
@@ -96,10 +112,9 @@ const Text = ({
         ))}
       </VariableText>
       <p>{`Cursor position: x: ${cursor.x}, y: ${cursor.y}`}</p>
-      <p>{`StringWidth: ${width}`}</p>
-      <p>{`StringHeight: ${height}`}</p>
+      <p>{`StringHeight: ${textHeight}`}</p>
       <p>{`FontSize: ${fontSize}`}</p>
-      <p>{`WindowSize: ${window.innerWidth}`}</p>
+      <p>{`WindowSize: width: ${windowWidth}, height: ${windowHeight}`}</p>
       <p>{`TextLength: ${text.length}`}</p>
       <p>{`ScaleY: ${scaleY}`}</p>
       <p>{`isScale: ${isScale}`}</p>

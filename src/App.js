@@ -8,12 +8,12 @@ function App() {
       <GlobalFonts />
       <Text
         text="Compress"
-        isScale={true}
+        isScale={false}
         isFlex={false}
         isAlpha={false}
         isStroke={false}
         isWidth={false}
-        isWeight={false}
+        isWeight={true}
         isItalic={false}
       />
     </div>
