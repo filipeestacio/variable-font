@@ -1,11 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { animated } from 'react-spring';
 
-const StyledChar = styled(animated.div)`
+const StyledChar = styled.div.attrs((props) => ({
+  style: {
+    opacity: props.alpha,
+    fontWeight: props.weight,
+  },
+}))`
   display: inline;
-  opacity: ${(props) => props.alpha};
-  font-weight: ${(props) => props.weight};
 `;
 
 const Char = ({ char, cursor, maxDist, isAlpha, isWeight }) => {
@@ -36,7 +38,7 @@ const Char = ({ char, cursor, maxDist, isAlpha, isWeight }) => {
       return Math.max(min, wght + min);
     };
     setAlpha(isAlpha ? getAttr(dist, 0, 1).toFixed(2) : 1);
-    setWeight(isWeight ? getAttr(dist, 100, 800) : 400);
+    setWeight((isWeight ? getAttr(dist, 100, 800) : 400).toString());
   }, [dist, isAlpha, maxDist, isWeight]);
 
   return (

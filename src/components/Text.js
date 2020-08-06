@@ -2,11 +2,12 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Char from './Char';
 
-const VariableText = styled.div`
+const VariableText = styled.div.attrs((props) => ({
+  style: { fontSize: `${props.fontSize}px` },
+}))`
   font-family: 'Compressa VF';
   text-rendering: optimizeSpeed;
   color: #d11b3d;
-  font-size: ${(props) => props.fontSize}px;
   display: inline;
   user-select: none;
   margin: 0 auto;
