@@ -2,7 +2,7 @@
 
 This is a port to React of a [beautiful codepen by Juan Fuentes](https://codepen.io/JuanFuentes/pen/rgXKGQ) that I found when researching variable fonts.
 
-[animated gif demo of variable font](variable-font-demo.gif)
+![](variable-font-demo.gif)
 
 [Click here to try it out in codesandbox!](https://githubbox.com/filipeestacio/variable-font)
 
