@@ -111,13 +111,6 @@ const Text = ({
           ></Char>
         ))}
       </VariableText>
-      <p>{`Cursor position: x: ${cursor.x}, y: ${cursor.y}`}</p>
-      <p>{`StringHeight: ${textHeight}`}</p>
-      <p>{`FontSize: ${fontSize}`}</p>
-      <p>{`WindowSize: width: ${windowWidth}, height: ${windowHeight}`}</p>
-      <p>{`TextLength: ${text.length}`}</p>
-      <p>{`ScaleY: ${scaleY}`}</p>
-      <p>{`isScale: ${isScale}`}</p>
     </>
   );
 };

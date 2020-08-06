@@ -7,13 +7,13 @@ function App() {
     <div className="App">
       <GlobalFonts />
       <Text
-        text="Compress"
-        isScale={false}
+        text="Hello World"
+        isScale={true}
         isFlex={true}
-        isAlpha={false}
-        isWidth={false}
+        isAlpha={true}
+        isWidth={true}
         isWeight={true}
-        isItalic={false}
+        isItalic={true}
       />
     </div>
   );

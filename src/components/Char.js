@@ -5,17 +5,29 @@ const StyledChar = styled.div.attrs((props) => ({
   style: {
     opacity: props.alpha,
     fontWeight: props.weight,
+    fontStretch: `${props.width}%`,
+    fontStyle: `oblique ${props.italic}deg`,
   },
 }))`
   display: inline;
 `;
 
-const Char = ({ char, cursor, maxDist, isAlpha, isWeight }) => {
+const Char = ({
+  char,
+  cursor,
+  maxDist,
+  isAlpha,
+  isWeight,
+  isWidth,
+  isItalic,
+}) => {
   const [dist, setDist] = useState(10);
   const [alpha, setAlpha] = useState(1);
   const [weight, setWeight] = useState('300');
+  const [width, setWidth] = useState('');
+  const [italic, setItalic] = useState(0);
 
-  const elChar = useRef(null);
+  const elChar = useRef();
 
   useEffect(() => {
     const getDist = (a, b) => {
@@ -26,8 +38,8 @@ const Char = ({ char, cursor, maxDist, isAlpha, isWeight }) => {
     };
     setDist(
       getDist(cursor, {
-        x: elChar.current.offsetLeft + elChar.current.offsetWidth / 1.75,
-        y: elChar.current.offsetTop,
+        x: elChar.current.offsetLeft + elChar.current.offsetWidth / 2,
+        y: elChar.current.offsetTop + elChar.current.offsetHeight / 2,
       })
     );
   }, [cursor]);
@@ -37,12 +49,20 @@ const Char = ({ char, cursor, maxDist, isAlpha, isWeight }) => {
       const wght = max - Math.abs((max * dist) / maxDist);
       return Math.max(min, wght + min);
     };
-    setAlpha(isAlpha ? getAttr(dist, 0, 1).toFixed(2) : 1);
+    setAlpha(isAlpha ? getAttr(dist, 0.1, 1).toFixed(2) : 1);
     setWeight((isWeight ? getAttr(dist, 100, 800) : 400).toString());
-  }, [dist, isAlpha, maxDist, isWeight]);
+    setWidth((isWidth ? getAttr(dist, 5, 200) : 100).toString());
+    setItalic(isItalic ? getAttr(dist, 0, 30).toFixed(2) : 0);
+  }, [dist, isAlpha, maxDist, isWeight, isWidth, isItalic]);
 
   return (
-    <StyledChar ref={elChar} alpha={alpha} weight={weight}>
+    <StyledChar
+      ref={elChar}
+      alpha={alpha}
+      weight={weight}
+      width={width}
+      italic={italic}
+    >
       {char}
     </StyledChar>
   );
