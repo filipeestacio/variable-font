@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Char from './Char';
 
 const VariableText = styled.div.attrs(
-  ({ fontSize, scaleY, lineHeight, isScale }) => ({
+  ({ fontSize, scaleY, lineHeight, isScale, isFlex }) => ({
     style: isScale
       ? {
           fontSize: `${fontSize}px`,
@@ -18,10 +18,10 @@ const VariableText = styled.div.attrs(
   font-family: 'Compressa VF';
   text-rendering: optimizeSpeed;
   color: #d11b3d;
-  display: inline-block;
+  display: ${(props) => (props.isFlex ? 'flex' : 'inline-block')};
   user-select: none;
-  margin: 0 auto;
   text-transform: uppercase;
+  ${(props) => props.isFlex && 'justify-content: space-between'};
 `;
 
 const Text = ({
@@ -94,6 +94,7 @@ const Text = ({
         scaleY={scaleY}
         lineHeight={lineHeight}
         isScale={isScale}
+        isFlex={isFlex}
         onMouseMove={(event) => {
           handleMouseMove(event);
         }}
