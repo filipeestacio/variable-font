@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Char from './Char';
 
 const VariableText = styled.div.attrs(
-  ({ fontSize, scaleY, lineHeight, isScale, isFlex }) => ({
+  ({ fontSize, scaleY, lineHeight, isScale }) => ({
     style: isScale
       ? {
           fontSize: `${fontSize}px`,
@@ -29,7 +29,6 @@ const Text = ({
   isScale,
   isFlex,
   isAlpha,
-  isStroke,
   isWidth,
   isWeight,
   isItalic,

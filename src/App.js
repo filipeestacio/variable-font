@@ -9,9 +9,8 @@ function App() {
       <Text
         text="Compress"
         isScale={false}
-        isFlex={false}
+        isFlex={true}
         isAlpha={false}
-        isStroke={false}
         isWidth={false}
         isWeight={true}
         isItalic={false}

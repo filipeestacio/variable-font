@@ -1,7 +1,7 @@
 Scale - Done
-Flex
+Flex - Done
 Alpha - Done
-Stroke
+Stroke - DEFERRED
 Width
 Weight - Done
 Italic
