@@ -1,12 +1,10 @@
 import React from 'react';
-import Text from './components/Text';
-import GlobalFonts from './fonts/fonts';
+import { VariableText } from './components/variableText';
 
 function App() {
   return (
     <div className="App">
-      <GlobalFonts />
-      <Text
+      <VariableText
         text="Hello World"
         isScale={true}
         isFlex={true}

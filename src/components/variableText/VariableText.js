@@ -1,30 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
-import Char from './Char';
+import VariableFont from './fonts/fonts';
+import { StyledText } from './VariableText.styled';
+import { Char } from './char';
 
-const VariableText = styled.div.attrs(
-  ({ fontSize, scaleY, lineHeight, isScale }) => ({
-    style: isScale
-      ? {
-          fontSize: `${fontSize}px`,
-          transform: `scale(1,${scaleY})`,
-          lineHeight: `${lineHeight}em`,
-        }
-      : {
-          fontSize: `${fontSize}px`,
-        },
-  })
-)`
-  font-family: 'Compressa VF';
-  text-rendering: optimizeSpeed;
-  color: #d11b3d;
-  display: ${(props) => (props.isFlex ? 'flex' : 'inline-block')};
-  user-select: none;
-  text-transform: uppercase;
-  ${(props) => props.isFlex && 'justify-content: space-between'};
-`;
-
-const Text = ({
+export const VariableText = ({
   text,
   isScale,
   isFlex,
@@ -87,7 +66,8 @@ const Text = ({
 
   return (
     <>
-      <VariableText
+      <VariableFont />
+      <StyledText
         ref={el}
         fontSize={fontSize}
         scaleY={scaleY}
@@ -110,9 +90,7 @@ const Text = ({
             isAlpha={isAlpha}
           ></Char>
         ))}
-      </VariableText>
+      </StyledText>
     </>
   );
 };
-
-export default Text;

@@ -1,18 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
-import styled from 'styled-components';
+import { StyledChar } from './Char.styled';
 
-const StyledChar = styled.div.attrs((props) => ({
-  style: {
-    opacity: props.alpha,
-    fontWeight: props.weight,
-    fontStretch: `${props.width}%`,
-    fontStyle: `oblique ${props.italic}deg`,
-  },
-}))`
-  display: inline;
-`;
-
-const Char = ({
+export const Char = ({
   char,
   cursor,
   maxDist,
@@ -67,5 +56,3 @@ const Char = ({
     </StyledChar>
   );
 };
-
-export default Char;

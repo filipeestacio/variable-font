@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-
 import CompressaPro from './CompressaPRO.woff2';
 
 export default createGlobalStyle`

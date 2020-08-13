@@ -1,0 +1,1 @@
+export { VariableText } from './VariableText';
